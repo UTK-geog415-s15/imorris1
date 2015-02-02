@@ -1,0 +1,62 @@
+---
+title: "Homework 1"
+author: "Ian Morris"
+date: "February 2, 2015"
+output: html_document
+---
+# INSTRUCTIONS:
+Edit this file by replacing the instructions with text and code to anser the questions.
+I should be able to knit this file and reproduce the html, pdf, or word document.
+
+A block to load in the data:
+```{r}
+library(ggplot2)
+rm(list=ls()) # Clean the workspace to be empty
+arbuthnot <- read.csv('/Users/ianmorris/Desktop/GEOG415/imorris1/homework1/data/arbuthnot.csv')
+```
+
+# Question 1
+
+```{r}
+ggplot(data=arbuthnot) + 
+     geom_line(aes(x=Year, y=Males/Females))+ 
+     ylab('Male:Female Sex Ratio')
+```
+
+```{r}
+ggplot(data=arbuthnot) + 
+  geom_line(aes(x=Year, y=Males/Females))+
+  scale_y_continuous(limits=c(0, 1.5)) +
+  ylab('Male:Female Sex Ratio')
+```
+
+ In the plot with the default y-axis, the differences in the annual sex ratio seem much more extreme. When the y-axis is set from 0 to 1.5, the annual variation seems much smaller. It generally appears to stay generally the same, just above 1.0, in the 0 to 1.5 plot, where in the default y-axis plot, it seems as if there are huge annual variations. So, they do not "feel" like they are describing the same data because of how large the swings appear to be in the default y-axis plot.
+  
+ If you were to create a graph in which the y-axis had a very narrow range, it would be easy to make the data appear to have huge shifts even if they were relatively small. On the other extreme, if you were to make the y-axis have an inappropriately-large range, the differences in the data would seem too modest and wouldn't give an accurate representation of how the data changes.
+ 
+ The plot with the y-axis existing from 0 to 1.5 seems more appropriate here. Although there are some small annual variations in the sex ratio at birth, they aren't nearly as extreme as the default y-axis plot makes them appear to be.
+
+# Question 2
+
+```{r}
+ggplot(data=arbuthnot) + geom_line(aes(x=Females, y=Males)) + ylab('Male Christenings') + xlab('Female Christenings') + geom_abline(slope = 1)
+```
+
+Given that a 45 degree line has a slope of 1, meaning that one male would be christened for every female christened, we can see that there are slightly more males born annually than females throughout the length of Arbuthnot's study. This shows that as more females are born, more males are also born, and vice versa. In some years, the ratio approached the 45 degree line and came very close to it, but in other years, the number of males born as compared to females spiked to a ratio of above 1.1:1. There is some variation in the ratio, but this plot shows that male births rise proportionately with female births, in general, and that slightly more males were christened on an annual basis than females.
+
+
+# Question 3
+
+I think that the christenings-based sample would be quite similar to one based on births, but there would be some slight difference. I imagine that only infants who survived for more than a few days were christened in this time period, and that infants who died right after birth would not have been included in this sample. Males are more likely to die in infancy than females are, so the actual ratio of males born to females born could be even more skewed towards males. However, there could also be issues that would skew the data towards males in the christenings-based sample, as males were culturally preferred in the 17th century, and it's possible that girls that were not desired by a family could have been not christened or even killed. It's important that Arbuthnot's data included most all christenings in London because the sample size is larger, and thus, more representative of reality. If Arbuthnot's sample were to have been smaller, there would have been more uncertainty about the validity of the sample. A christenings-based sample wouldn't be as appropriate today, because fewer parents christen their children. Generally, only church-going Christian families christen their children, and the ratio of males to females in that particular population would probably be different than if one's desire were to acquire a representative sample for all people. For example, in certain cultures, there is a strong preference for male children over females to this day. Because of this, infanticide and sex-based abortions prop up the number of males born to females. A christenings-based sample would not fully incorporate this particular section of society into its sample. Also, it's possible that there are environmental factors that could cause a certain group of people to produce a disproportionately high number of females or males, and it's possible that this group wouldn't be included in a christenings-based sample. In this day and age, it would be important to use a sample that includes all different groups.
+
+# Question 4
+
+"Sex ratio at birth" refers to the ratio of males born to the ratio of females born. The worldwide figure for this ratio is thought to be around 107 males to 100 females at birth. This ratio is dependent on several factors, including biology. The age of a mother at the time of birth can have an effect on the sex of the child born, as mothers aged 25-35 produce sex ratios at birth closer to the average figure, whereas dramatically young and old mothers have more varied ratios. Also, as women have more children, the chance that they will have a girl increases with every birth. Culture also influences the sex ratio at birth, as cultures that have more children will tend to have a higher ratio of females to males born for the reason discussed above. Also, in certain cultures, males are strongly preferred to females, so sex-selective abortions can sway the sex ratio at birth towards males. Technology plays a part in this, as cultures and societies with access to ultrasound technologies have the ability to see their child's gender before it is born, and thus gives them the option of aborting their child based on its sex. This phenomenon is seen in China under the one-child policy, as families who are only able to have one (or in some cases, two) children with access to ultrasound technology have a higher proportion of male births to female births than other societies. Males are the preferred gender there, so some families choose to abort female fetuses if they prefer for their child to be male. The 21st century United States sex ratio at birth  is closely aligned with other first-world countries'. There are slightly more males born than females, but the overall sex ratio ends up being pretty close to 1:1 because males are more likely to die earlier than females are. In the case of 17th century England, which is the data from the Arbuthnot set, the ratio ranged from approximately 1.04:1 to 1.15:1, indicating that males were also more likely to have been born. The spikes in the ratio could have been due to environmental factors, such as a correlation between warmer annual temperatures and a higher sex ratio. 
+
+# Question 5
+
+a. The average height of young women ages 18-24 is 64.5 in.  The distribution of heights is approximately normal (Gaussian) with a standardard deviation of $\sigma=2.5$.  Complete this sentence: Approximately 95% of women have a height greater than __59.5____ in and less than ___69.5___ in.
+
+# Question 6
+
+The top part of the equation is telling you to come up with the sum of all of the distances of the numbers in the data set from the mean squared. The denominator of the equation simply means the number of numbers in the sample minus one. You're to divide the sum of all of the squared distances by the number of numbers in the data set minus one in order to find the sample variance. The sample variance measures the average distance of each data point from the mean. So, if a data set has a group of numbers which are generally close to the mean, there would be a small variance because each of the numbers is a relatively close distance from the mean. If a data set has a group of numbers that are generally spread out and far away from the mean, the variance will be larger because there will be a greater average distance from the mean.
